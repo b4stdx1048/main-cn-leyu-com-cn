@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://b4stdx1048.github.io/main-cn-leyu-com-cn/sitemap.xml
