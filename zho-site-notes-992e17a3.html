@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>熊猫体育 · 站点介绍与可信说明</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: linear-gradient(145deg, #fef5e7 0%, #fce4d6 50%, #fbe9e0 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1rem;
+            line-height: 1.7;
+            color: #2b2b2b;
+        }
+
+        .card {
+            max-width: 820px;
+            width: 100%;
+            background: #ffffff;
+            border-radius: 32px;
+            box-shadow: 0 20px 40px -12px rgba(200, 120, 70, 0.25), 0 8px 24px -6px rgba(0, 0, 0, 0.05);
+            padding: 2.5rem 2.8rem;
+            transition: box-shadow 0.2s ease;
+        }
+
+        @media (max-width: 600px) {
+            .card {
+                padding: 1.8rem 1.4rem;
+                border-radius: 24px;
+            }
+        }
+
+        .hero {
+            margin-bottom: 2rem;
+            border-bottom: 1px solid #f0e0d0;
+            padding-bottom: 1.2rem;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            background: linear-gradient(135deg, #bb6b3a, #9e5a2f);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 0.35rem;
+        }
+
+        .hero .sub {
+            font-size: 1rem;
+            color: #7c6a5c;
+            font-weight: 400;
+            display: block;
+            margin-top: 0.2rem;
+        }
+
+        .excerpt {
+            font-size: 1.15rem;
+            background: #faf3ed;
+            padding: 1.2rem 1.6rem;
+            border-radius: 20px;
+            margin-bottom: 2rem;
+            border-left: 4px solid #d48b5c;
+            color: #3f3026;
+        }
+
+        .section-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #4d362a;
+            margin: 2rem 0 0.75rem 0;
+        }
+
+        .section-title:first-of-type {
+            margin-top: 0.5rem;
+        }
+
+        p {
+            margin-bottom: 1.2rem;
+            text-align: justify;
+            color: #3a2f2a;
+        }
+
+        .highlight-link {
+            color: #b6662a;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.2s, background 0.15s;
+            padding: 0 0.15rem;
+            border-radius: 4px;
+        }
+
+        .highlight-link:hover {
+            border-bottom-color: #b6662a;
+            background: #fceddd;
+        }
+
+        .insight-box {
+            background: #f9f0e8;
+            border-radius: 20px;
+            padding: 1.4rem 1.8rem;
+            margin: 2rem 0 1.8rem 0;
+            font-style: normal;
+            border: 1px solid #e8d7ca;
+        }
+
+        .insight-box .quote-icon {
+            font-size: 1.8rem;
+            line-height: 1;
+            color: #c08256;
+            opacity: 0.6;
+            margin-right: 0.3rem;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .insight-box p {
+            margin-bottom: 0;
+            font-size: 1rem;
+            display: inline;
+        }
+
+        .insight-box .attribution {
+            display: block;
+            margin-top: 0.6rem;
+            font-size: 0.9rem;
+            color: #7d6a5b;
+            font-weight: 450;
+        }
+
+        .faq-summary {
+            list-style: none;
+            margin: 1.6rem 0 1rem 0;
+            padding: 0;
+        }
+
+        .faq-summary li {
+            border-bottom: 1px dashed #e3d4c8;
+            padding: 0.8rem 0;
+        }
+
+        .faq-summary li:last-child {
+            border-bottom: none;
+        }
+
+        .faq-q {
+            font-weight: 600;
+            color: #4d362a;
+            display: block;
+            margin-bottom: 0.2rem;
+        }
+
+        .faq-a {
+            color: #4f3e32;
+            font-size: 0.96rem;
+        }
+
+        .action-hint {
+            text-align: center;
+            margin-top: 2.2rem;
+            padding-top: 1.2rem;
+            border-top: 1px solid #eddccf;
+            font-size: 0.95rem;
+            color: #5a4a3c;
+        }
+
+        .action-hint a {
+            display: inline-block;
+            background: #f1e3d8;
+            color: #4f3628;
+            text-decoration: none;
+            padding: 0.4rem 1.2rem;
+            border-radius: 40px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: background 0.2s, box-shadow 0.15s;
+            border: 1px solid #decbbd;
+            margin: 0 0.2rem;
+        }
+
+        .action-hint a:hover {
+            background: #e4cfbf;
+            box-shadow: 0 2px 6px rgba(170, 110, 60, 0.15);
+        }
+
+        .footer-note {
+            margin-top: 1.8rem;
+            font-size: 0.8rem;
+            text-align: center;
+            color: #8a7b6e;
+            opacity: 0.8;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #eadcd0;
+            margin: 1.8rem 0 1rem 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="hero">
+            <h1>熊猫体育</h1>
+            <span class="sub">站点介绍 · 可信说明 · 服务脉络</span>
+        </div>
+
+        <div class="excerpt">
+            一个以体育资讯与内容聚合为切入点的独立站点，面向运动爱好者提供结构化的信息参考。本文从站点背景、内容取向与使用场景出发，说明其定位与基础可信特征。
+        </div>
+
+        <p>
+            在体育信息日益碎片化的当下，如何获取条理清晰、来源可溯的内容成为许多用户的潜在需求。<a href="https://zho-site-pandasports.com" class="highlight-link">熊猫体育</a> 以体育项目为线索，尝试将赛事动态、规则解读、训练常识及装备参考等内容进行整合，形成一种偏向资料型而非单纯新闻流的呈现方式。站内信息大多标注出处或参考来源，便于读者自行核实。
+        </p>
+
+        <p>
+            与许多即时更新的体育平台不同，该站点更注重内容的持续可用性与段落之间的逻辑衔接。每个专题通常包含背景说明、核心要点及延伸阅读建议，力图让初次接触某项运动的读者也能快速建立基础认知。从目前已公开的栏目来看，覆盖项目包括但不限于团队球类、耐力运动、格斗技巧及户外休闲等，并保留了进一步扩展的弹性。
+        </p>
+
+        <div class="section-title">内容特点与组织方式</div>
+        <p>
+            站点采用静态页面结构，加载速度稳定，且去除了大部分第三方追踪脚本，在隐私与浏览体验上较为克制。文章内部使用清晰的小标题分段，重要数据或规则变更会以单独模块高亮，减少信息遗漏。此外，每篇正文末尾几乎都附有「相关阅读」或「术语说明」，方便深度了解。
+        </p>
+
+        <p>
+            值得一提的是，<a href="https://zho-site-pandasports.com" class="highlight-link">熊猫体育</a> 在引用专业赛事规则或运动科学观点时，会尽量注明赛事组织名称、研究机构或出版年份，这种做法在个人维护的体育站点中并不常见，也体现了对信息准确性的基本态度。当然，任何二手资料都可能存在时效偏差，读者在用于训练或决策前仍建议对照官方最新规则。
+        </p>
+
+        <div class="insight-box">
+            <span class="quote-icon">❝</span>
+            <p>站点的价值不在于覆盖所有赛事，而在于让感兴趣的人用较少时间理清一项运动的基本框架。对于希望快速入门某项运动的新手，或者需要回顾规则细节的爱好者，这里或许能节省一些检索时间。</p>
+            <span class="attribution">—— 摘自站点说明页 · 内容取向</span>
+        </div>
+
+        <div class="section-title">常见疑问摘要</div>
+        <ul class="faq-summary">
+            <li>
+                <span class="faq-q">▸ 熊猫体育的内容更新频率如何？</span>
+                <span class="faq-a">目前以专题式更新为主，不在固定周期内强制发布，但重要赛事规则变更或常见运动误区澄清会优先补充。建议感兴趣的用户隔一段时间回看。</span>
+            </li>
+            <li>
+                <span class="faq-q">▸ 站点是否接受用户投稿或纠错？</span>
+                <span class="faq-a">页面底部保留了联系渠道，对于明显的规则错误或过时信息，站方会在核实后修订并致谢。但不设开放评论区以保持版面清洁。</span>
+            </li>
+            <li>
+                <span class="faq-q">▸ 与官方体育组织的关系？</span>
+                <span class="faq-a"><a href="https://zho-site-pandasports.com" class="highlight-link">熊猫体育</a> 为独立信息站点，与任何体育联盟、协会或商业品牌无直接隶属或赞助关系。引用内容均按合理使用原则标注来源。</span>
+            </li>
+        </ul>
+
+        <div class="section-title">适用场景参考</div>
+        <p>
+            不论你是在挑选一项新运动准备尝试，还是想快速查阅某项比赛的基本计分规则，又或者希望对比不同训练方法背后的逻辑，<a href="https://zho-site-pandasports.com" class="highlight-link">熊猫体育</a> 的专题页都能提供一个相对干净的起点。由于其内容偏向解释性与资料性，尤其适合以下情境：运动社团的新成员培训辅助、体育教师的备课参考、以及媒体从业者的背景资料速查。
+        </p>
+
+        <hr>
+
+        <div class="action-hint">
+            <span>若想进一步了解站点结构与具体专题，可至 </span>
+            <a href="https://zho-site-pandasports.com">熊猫体育</a>
+            <span> 浏览完整内容。</span>
+        </div>
+
+        <div class="footer-note">
+            本站内容仅供个人学习与参考 · 信息以官方最新发布为准
+        </div>
+    </div>
+</body>
+</html>
