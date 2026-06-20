@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>熊猫体育 – 运动场景与数据服务</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #faf7f2;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            line-height: 1.7;
+            color: #2e2b27;
+            padding: 2rem 1.5rem;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* 顶部导航 */
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 0 1.8rem 0;
+            border-bottom: 1px solid #e6ddd2;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .nav-logo {
+            font-weight: 550;
+            font-size: 1.3rem;
+            letter-spacing: 1px;
+            color: #3f3a35;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #5f5750;
+            font-size: 0.95rem;
+            font-weight: 450;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s;
+        }
+
+        .nav-links a:hover {
+            border-bottom-color: #b7a48b;
+        }
+
+        /* hero 区 */
+        .hero {
+            margin: 1.8rem 0 2.8rem 0;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            font-weight: 475;
+            letter-spacing: -0.02em;
+            line-height: 1.3;
+            color: #292420;
+            max-width: 800px;
+        }
+
+        .hero p {
+            margin-top: 1rem;
+            font-size: 1.05rem;
+            max-width: 720px;
+            color: #4b4540;
+        }
+
+        .hero a {
+            color: #7f6b58;
+            text-decoration: underline;
+            text-underline-offset: 0.2rem;
+            transition: color 0.2s;
+        }
+
+        .hero a:hover {
+            color: #4a3f36;
+        }
+
+        /* 引言 / 提示框 */
+        .note-block {
+            background: #f3ede7;
+            border-left: 4px solid #c7b6a3;
+            padding: 1.4rem 1.8rem;
+            margin: 2.8rem 0;
+            border-radius: 0 8px 8px 0;
+            font-size: 0.98rem;
+            color: #3d3833;
+        }
+
+        .note-block strong {
+            font-weight: 600;
+            color: #2e2720;
+        }
+
+        /* 场景网格 */
+        .scenes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 1.8rem;
+            margin: 3rem 0 2.5rem 0;
+        }
+
+        .scene-card {
+            background: #ffffffec;
+            padding: 1.8rem 1.3rem 1.8rem 1.3rem;
+            border-radius: 16px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.03), 0 1px 3px rgba(0,0,0,0.04);
+            border: 1px solid #ebe3d9;
+            transition: box-shadow 0.2s, transform 0.1s;
+        }
+
+        .scene-card:hover {
+            box-shadow: 0 6px 14px rgba(90, 70, 50, 0.06);
+            transform: translateY(-2px);
+        }
+
+        .scene-card h3 {
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: #332e29;
+            letter-spacing: -0.01em;
+        }
+
+        .scene-card p {
+            font-size: 0.95rem;
+            color: #4f4943;
+            line-height: 1.6;
+            margin-bottom: 0.4rem;
+        }
+
+        .scene-card .tag {
+            display: inline-block;
+            background: #e9dfd4;
+            padding: 0.15rem 0.8rem;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            color: #4f443b;
+            margin-top: 0.5rem;
+        }
+
+        /* 常见说明 / FAQ 摘要 */
+        .faq-summary {
+            margin: 3.5rem 0 2.5rem 0;
+        }
+
+        .faq-summary h2 {
+            font-size: 1.4rem;
+            font-weight: 480;
+            color: #2f2a25;
+            margin-bottom: 1.2rem;
+            border-bottom: 1px solid #e2d8cd;
+            padding-bottom: 0.4rem;
+        }
+
+        .faq-item {
+            padding: 0.9rem 0;
+            border-bottom: 1px dashed #e7ddd0;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-item strong {
+            font-weight: 550;
+            color: #3d352e;
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .faq-item p {
+            margin: 0.2rem 0 0 0;
+            font-size: 0.95rem;
+            color: #4f4842;
+        }
+
+        .faq-item a {
+            color: #7f6b58;
+            text-decoration: underline;
+            text-underline-offset: 0.15rem;
+        }
+
+        .faq-item a:hover {
+            color: #3d322b;
+        }
+
+        /* 页脚 */
+        .footer {
+            margin-top: 4rem;
+            padding-top: 1.8rem;
+            border-top: 1px solid #e0d5c8;
+            font-size: 0.85rem;
+            color: #6c645b;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer a {
+            color: #5f554b;
+            text-decoration: none;
+            border-bottom: 1px dotted #bbb0a2;
+        }
+
+        .footer a:hover {
+            border-bottom-style: solid;
+            color: #3f362f;
+        }
+
+        /* 响应式 */
+        @media (max-width: 600px) {
+            body {
+                padding: 1.2rem 1rem;
+            }
+            .hero h1 {
+                font-size: 1.7rem;
+            }
+            .nav-links {
+                gap: 1.2rem;
+            }
+            .scenes {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (min-width: 700px) {
+            .hero h1 {
+                font-size: 2.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- 导航 -->
+    <nav class="nav">
+        <span class="nav-logo">pandasports</span>
+        <div class="nav-links">
+            <a href="#intro">概述</a>
+            <a href="#scenes">场景</a>
+            <a href="#faq">说明</a>
+        </div>
+    </nav>
+
+    <!-- hero 区域 -->
+    <section class="hero" id="intro">
+        <h1>运动数据 · 场景适配 · 轻量服务</h1>
+        <p>
+            <a href="https://cn1-pandasports.com">熊猫体育</a> 围绕运动参与和活动管理，提供面向个人与小型团体的信息组织方式。
+            从活动筹备到过程记录，注重实用与简洁，不堆叠冗余功能。
+        </p>
+    </section>
+
+    <!-- 引用 / 提示块 -->
+    <div class="note-block">
+        <strong>关于本项目</strong> —— 服务以运动场景为锚点，聚合赛程、场地与成员信息。
+        所有数据字段均可根据实际活动调整，保持结构灵活。
+    </div>
+
+    <!-- 三个场景模块 -->
+    <section id="scenes">
+        <div class="scenes">
+            <div class="scene-card">
+                <h3>日常训练</h3>
+                <p>支持循环赛、计时训练与自由组合。可记录单次完成度与基础体能指标，便于回顾调整。</p>
+                <span class="tag">周期管理</span>
+            </div>
+            <div class="scene-card">
+                <h3>小型赛事</h3>
+                <p>赛程编排、分组对阵、实时比分。每个阶段可独立配置，适配 4–16 支队伍的常见规模。</p>
+                <span class="tag">对阵表</span>
+            </div>
+            <div class="scene-card">
+                <h3>社群活动</h3>
+                <p>发布活动信息、收集报名、统计出席。参与者可查看场地与时间变更，降低沟通成本。</p>
+                <span class="tag">轻量协作</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 常见问题 / 说明摘要 -->
+    <section class="faq-summary" id="faq">
+        <h2>常见说明</h2>
+
+        <div class="faq-item">
+            <strong>适用哪些运动类型？</strong>
+            <p>球类、田径、健身课程、户外徒步等以小组为单位的活动均可适配。字段类型可自定义。</p>
+        </div>
+
+        <div class="faq-item">
+            <strong>是否需要注册账号？</strong>
+            <p>当前版本无需强制注册。参与者通过分享链接或活动码查看信息。管理功能保留基础权限区分。</p>
+        </div>
+
+        <div class="faq-item">
+            <strong>数据存储与隐私</strong>
+            <p>活动数据仅创建者可管理。系统不采集无关个人信息。详细说明可查阅服务文档。</p>
+        </div>
+
+        <div class="faq-item">
+            <strong>与熊猫体育的关系</strong>
+            <p>该系列工具由 <a href="https://cn1-pandasports.com">熊猫体育</a> 提供底层支持，所有场景模块均依托同一套数据模型，保持体验一致。</p>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <span>© 熊猫体育 · 运动场景工具</span>
+        <span><a href="https://cn1-pandasports.com">熊猫体育</a> – 轻量导航式介绍页</span>
+    </footer>
+
+</div>
+</body>
+</html>
